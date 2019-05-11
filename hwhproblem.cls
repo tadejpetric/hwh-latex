@@ -1,13 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hwhProblem}[2019/04/30 v0.1 HWH latex template]
+\ProvidesClass{hwhProblem}[2019/04/30 v0.9 HWH latex template]
 
 \LoadClass{article}
 
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage[a4paper, top=2cm, bottom=2cm]{geometry} % dimensions
+\RequirePackage[a4paper, top=2cm, bottom=2cm]{geometry} % dimensions.
+% TODO: make a4paper dependant on the included option.
 \RequirePackage{multicol} % for alignment of challenge info
-%\RequirePackage{xcolor}
+\RequirePackage{xcolor}
 \RequirePackage{hyperref} % to ensure footnote isn't refd
 \RequirePackage[calc]{datetime2} % for date
 \RequirePackage{graphicx} % for hwh logo
@@ -15,7 +14,7 @@
 
 
 \DTMnewdatestyle{beedate}
-{
+{%
   \renewcommand*{\DTMdisplaydate}[4]{\DTMtwodigits{##3} \DTMmonthname{##2} ##1}
 }
 
@@ -78,4 +77,19 @@
   \begin{NoHyper}%
     \nostarfootnote{Created by \@author{} for Homework Help Events}%
   \end{NoHyper}
+}
+
+\newcommand{\solution}[1]
+{%
+  \clearpage
+  \vspace*{\fill}
+  \begin{center}
+    \begin{minipage}{0.5\linewidth}
+      \textbf{\LARGE WARNING}\\
+      \textbf{\Large Solution on the following page}
+    \end{minipage}
+  \end{center}
+  \vfill
+  \clearpage
+  \include{#1}
 }
